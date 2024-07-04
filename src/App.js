@@ -13,9 +13,9 @@ function App() {
       <Router>
         <Header panier={panier} />
         <Routes>
-          <Route path='/' element={<Accueil />}></Route>
+          <Route path='/' element={<Accueil panier={panier} setPanier={setPanier} />}></Route>
           <Route path='/panier' element={<Panier />}></Route>
-          <Route path='/details/:id' element={<Details />}></Route>
+          <Route path='/details/:id' element={<Details panier={panier} setPanier={setPanier} />}></Route>
         </Routes>
         <Footer />
       </Router>

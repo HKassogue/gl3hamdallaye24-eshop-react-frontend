@@ -1,6 +1,20 @@
 import { Link } from "react-router-dom"
 
-function BadgeProduit({produit}) {
+function BadgeProduit({produit, panier, setPanier}) {
+    const addToPanier = () => {
+        const produitInPanier = panier.find((item) => item.produit.id===produit.id)
+        if(produitInPanier) {
+            const panierSansProduit = panier.filter((item) => item.produit.id!==produit.id)
+            const newPanier = [...panierSansProduit, 
+                {produit, qte: produitInPanier.qte+1}]
+            setPanier(newPanier)
+        }
+        else {
+            const newPanier = [...panier, {produit, qte: 1}]
+            setPanier(newPanier)
+        }
+    }
+
     return (
         <div className="produit-badge">
             <div className="produit-image">
@@ -11,7 +25,7 @@ function BadgeProduit({produit}) {
                 <h3>{produit.prix} F</h3>
             </div>
             <div className="produit-bouton">
-                <button className="ajout-panier-btn">+Panier</button>
+                <button className="ajout-panier-btn" onClick={addToPanier}>+Panier</button>
                 <Link to={`/details/${produit.id}`} className="details-btn">Détails</Link>
             </div>
         </div>

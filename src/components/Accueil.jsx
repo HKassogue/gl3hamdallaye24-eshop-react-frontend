@@ -2,13 +2,13 @@ import React from 'react'
 import { produits } from '../dataTest/produits'
 import BadgeProduit from './BadgeProduit'
 
-function Accueil() {
+function Accueil({panier, setPanier}) {
   return (
     <main>
         <section id="produits">
             <div id="produits-liste">
                 { produits.map((produit) => 
-                    <BadgeProduit produit={produit} />
+                    <BadgeProduit produit={produit} panier={panier} setPanier={setPanier} />
                 )}
             </div>
             <div id="produits-boutons">

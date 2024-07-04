@@ -30,7 +30,7 @@ function Header({panier}) {
                 <nav>
                     <ul>
                         <li><NavLink to="/" className={({isActive}) => (isActive ? 'active' : '')}>Accueil</NavLink></li>
-                        <li><NavLink to="/panier" className={({isActive}) => (isActive ? 'active' : '')}>Panier (<span id="nav-panier">{panier.length}</span>)</NavLink></li>
+                        <li><NavLink to="/panier" className={({isActive}) => (isActive ? 'active' : '')}>Panier (<span id="nav-panier">{panier.reduce((nbr, item) => nbr+item.qte, 0)}</span>)</NavLink></li>
                         <li><a href="#" className="">Contact</a></li>                        
                     </ul>
                 </nav>
