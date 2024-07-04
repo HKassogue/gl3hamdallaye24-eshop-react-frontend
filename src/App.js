@@ -14,7 +14,7 @@ function App() {
         <Header panier={panier} />
         <Routes>
           <Route path='/' element={<Accueil panier={panier} setPanier={setPanier} />}></Route>
-          <Route path='/panier' element={<Panier />}></Route>
+          <Route path='/panier' element={<Panier panier={panier} setPanier={setPanier} />}></Route>
           <Route path='/details/:id' element={<Details panier={panier} setPanier={setPanier} />}></Route>
         </Routes>
         <Footer />
