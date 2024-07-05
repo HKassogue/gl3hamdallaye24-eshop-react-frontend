@@ -4,10 +4,17 @@ import Header from './components/Header';
 import {Route, Routes, BrowserRouter as Router} from "react-router-dom";
 import Panier from './components/Panier'
 import Details from './components/Details';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
-  const [panier, setPanier] = useState([])
+  const savedPanier = localStorage.getItem('panier')
+  const [panier, setPanier] = useState(
+    savedPanier ? JSON.parse(savedPanier) : []
+  )
+  useEffect(() => {
+    localStorage.setItem('panier', JSON.stringify(panier))
+  }, [panier])
+
   return (
     <>
       <Router>
