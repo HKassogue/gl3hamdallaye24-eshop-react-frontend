@@ -13,6 +13,17 @@ function Panier({panier, setPanier}) {
     setPanier(newPanier)
   }
 
+  const moinQtePanier = (produit) => {
+    const newPanier = panier.map((item) => {
+      if(item.produit.id===produit.id) 
+        if(item.qte>1) return {...item, qte: item.qte-1}
+      return item
+    })
+    setPanier(newPanier)
+  }
+
+  <Header reduction={reduction}, date={date} />
+
   return (
     <main>
             <div id="panier">
