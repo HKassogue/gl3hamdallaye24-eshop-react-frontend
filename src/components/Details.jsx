@@ -1,10 +1,21 @@
 import React from 'react'
 import { produits } from '../dataTest/produits'
 import { Link, useParams } from 'react-router-dom'
+import axios from 'axios'
+import useSWR from 'swr'
+import {APP_URI} from '../conf.js'
 
 function Details({panier, setPanier}) {
   const {id} = useParams()
-  const produit = produits.find((elt) => elt.id===Number(id))
+  //const produit = produits.find((elt) => elt.id===Number(id))
+  const getProduit = async () => {
+    const response = await axios.get(`${APP_URI}/produits/${id}`)
+    const { data } = response.data
+    return data
+  }
+  const { data } = useSWR('produit', getProduit)
+  if (!data) return <h2>Chargement ...</h2>
+  const produit = data
 
   const addToPanier = () => {
     const produitInPanier = panier.find((item) => item.produit.id===produit.id)

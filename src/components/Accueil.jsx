@@ -1,7 +1,10 @@
 import React from 'react'
-import { produits } from '../dataTest/produits'
+//import { produits } from '../dataTest/produits'
 import BadgeProduit from './BadgeProduit'
 import { useState } from 'react'
+import axios from 'axios'
+import useSWR from 'swr'
+import {APP_URI} from '../conf.js'
 
 
 function Accueil({panier, setPanier}) {
@@ -16,6 +19,15 @@ function Accueil({panier, setPanier}) {
         const { name, value } = e.target
         setFilters({ ...filters, [name]: value })
       }
+
+      const getProduits = async () => {
+        const response = await axios.get(`${APP_URI}/produits`)
+        const { data } = response.data
+        return data
+      }
+      const { data } = useSWR('produits', getProduits)
+      if (!data) return <h2>Chargement ...</h2>
+      const produits = data
 
       const filteredProduits = produits.filter((produit) => {
         const nomMatch = produit.nom
