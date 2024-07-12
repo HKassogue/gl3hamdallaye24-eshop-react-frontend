@@ -2,6 +2,7 @@ import React from 'react'
 import btnPlus from "../img/icons/add.png"
 import btnMoins from "../img/icons/minus.png"
 import btnDelete from "../img/icons/delete.png"
+import { Link } from 'react-router-dom'
 
 function Panier({panier, setPanier}) {
   const plusQtePanier = (produit) => {
@@ -72,8 +73,8 @@ function Panier({panier, setPanier}) {
                     </tfoot>
                 </table>
                 <div id="btns-confirmer-annuler-panier">
-                    <button id="confirmer-payer">Confirmer le panier et payer</button>
-                    <button id="vider-panier">Vider le panier et reprendre</button>
+                    <Link id="confirmer-payer" to='/checkout'>Confirmer le panier et payer</Link>
+                    <button id="vider-panier" onClick={()=>{setPanier([])}}>Vider le panier et reprendre</button>
                 </div>
             </div>
         </main>
