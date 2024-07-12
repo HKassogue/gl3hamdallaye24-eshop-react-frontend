@@ -6,6 +6,8 @@ import Panier from './components/Panier'
 import Details from './components/Details';
 import { useState, useEffect } from 'react';
 import Checkout from './components/Checkout';
+import Inscription from './components/Inscription';
+import Connexion from './components/Connexion';
 
 function App() {
   const savedPanier = localStorage.getItem('panier')
@@ -25,6 +27,8 @@ function App() {
           <Route path='/panier' element={<Panier panier={panier} setPanier={setPanier} />}></Route>
           <Route path='/details/:id' element={<Details panier={panier} setPanier={setPanier} />}></Route>
           <Route path='/checkout' element={<Checkout/>}></Route>
+          <Route path='/inscription' element={<Inscription/>}></Route>
+          <Route path='/connexion' element={<Connexion/>}></Route>
         </Routes>
         <Footer />
       </Router>
