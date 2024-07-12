@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 function Connexion() {
   return (
@@ -19,7 +20,7 @@ function Connexion() {
                     </div>
                     <hr/>
                     <p>
-                        Vous n'avez pas de compte ? <a href="inscription.html">Créez votre compte</a>
+                        Vous n'avez pas de compte ? <Link to="/inscription">Créez votre compte</Link>
                     </p>
                 </form>
             </div>
